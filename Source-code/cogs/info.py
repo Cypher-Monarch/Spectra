@@ -16,11 +16,11 @@ class Info(commands.Cog):  # Links the command file to the command handler
     async def info(self, interaction: discord.Interaction):  # Parameters include the interaction context
        #Contains all the dev info
         devinfo = {
-        "Developers": "Prattyush and Rishabh",
-        "Project for": "CS Finals",
-        "Last updated on": "13-10-2024",
-        "Latest Version": "R2.B3.P1.G0"
-        }
+        "Developers": "CypherMonarch & MonoDrift",
+        "Development Focus": "Multipurpose Discord Bot",
+        "Last updated on": "24-02-2025",
+        "Latest Version": "R2.B3.P1.GX"
+    }
        #Iteratively accesses and formats the keys (titles) and values (The descriptions) of the dictionary
         result = "\n".join(f"`{key}`: {value}" for key, value in devinfo.items())
        # Create an embed for the dev info response
