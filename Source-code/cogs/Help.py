@@ -16,6 +16,8 @@ class Help(commands.Cog): #Links the command file to the command handler
         Commands = """
 `/calc`: Calculator on discord!!
 `/cf`: Sends random chemical formula!!
+`/cypher`: Encodes your message into a super secret code!!
+`/decypher`: Decodes your message using a super secret code!!
 `/color`: Sends random color in hex or rgb format!!
 `/everything`: A little bit of everything in one command!!
 `/food`: Generate a random food item based on a nutrient you want!!
