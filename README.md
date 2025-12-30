@@ -40,3 +40,5 @@ For feature requests, bug reports, or general inquiries, please contact **monarc
 ## 🔗 **Contributing**  
 Developers interested in contributing to Spectra’s development are encouraged to fork the repository, implement changes, and submit a pull request for review. Contributions must adhere to best coding practices and maintain the integrity of the project’s core functionalities.  
 
+
+
