@@ -1,4 +1,4 @@
-#MOdules we are going to require to build the /cypher command
+# Modules we are going to require to build the /cypher command
 import discord
 from discord.ext import commands
 from discord import app_commands

@@ -4,12 +4,12 @@ import random
 from discord.ext import commands
 from discord import app_commands
 #Definition of a class named Everything
-class Everything(commands.Cog): #Links the command file to the command handler
-    def __init__(self, bot): #Initalises the bot to itself
+class Everything(commands.Cog):                                   #Links the command file to the command handler
+    def __init__(self, bot):                                      #Initalises the bot to itself
         self.bot = bot
 
-    @commands.Cog.listener() # Registers a listener for events (enables the cog to respond to Discord events)
-    async def on_ready(self): #This one is just for confirming that the command has been loaded (Prints it in terminal itself)
+    @commands.Cog.listener()                                      # Registers a listener for events (enables the cog to respond to Discord events)
+    async def on_ready(self):                                     #This one is just for confirming that the command has been loaded (Prints it in terminal itself)
         print('"Everything" loaded')
     #The bot is initialised to command /everything
     @app_commands.command(name = "everything", description = "A little bit of everything in one command!")
@@ -17,15 +17,15 @@ class Everything(commands.Cog): #Links the command file to the command handler
         # Combined tuples of food sources, tv sreies, chemical formulae, music genre and quotes 
         food_sources = (
             "rice", "bread", "pasta", "potatoes", "corn", "oats", "bananas", "quinoa", "sweet potatoes", "apples",
-            "chicken", "fish", "eggs", "lentils", "tofu", "beans", "yogurt", "nuts", "cheese",  
+            "chicken", "fish", "eggs", "lentils", "tofu", "beans", "yogurt", "nuts", "cheese", 
             "olive oil", "avocados", "butter", "seeds", "fatty fish", "dark chocolate", "coconut oil", "whole milk",
-            "spinach", "broccoli", "almonds", "salmon", "lentils", "shellfish", "pumpkin seeds",  
+            "spinach", "broccoli", "almonds", "salmon", "lentils", "shellfish", "pumpkin seeds", 
             "carrots", "sweet potatoes", "red peppers", "mangoes", "apricots", "liver", "pumpkin",
-            "whole grains", "leafy greens", "seeds", "chicken", "bananas",  
-            "oranges", "strawberries", "kiwi", "bell peppers", "tomatoes", "brussels sprouts", "papaya",  
-            "mushrooms", "fortified milk", "egg yolks", "fortified cereals", "tuna", "sardines", "orange juice",  
-            "sunflower seeds", "spinach", "butternut squash", "kiwi", "olive oil", "peanuts",  
-            "kale", "lettuce", "green beans", "parsley", "soybeans"  
+            "whole grains", "leafy greens", "seeds", "chicken", "bananas", 
+            "oranges", "strawberries", "kiwi", "bell peppers", "tomatoes", "brussels sprouts", "papaya", 
+            "mushrooms", "fortified milk", "egg yolks", "fortified cereals", "tuna", "sardines", "orange juice", 
+            "sunflower seeds", "spinach", "butternut squash", "kiwi", "olive oil", "peanuts", 
+            "kale", "lettuce", "green beans", "parsley", "soybeans" 
         )
         tv_series = (
             "Breaking Bad", "Game of Thrones", "Friends", "Stranger Things", "The Office", "The Mandalorian", 
@@ -171,7 +171,7 @@ class Everything(commands.Cog): #Links the command file to the command handler
         )
         form = random.choice(chemical_formulas)
         quote = random.choice(quotes)
-        food = random.choice(food_sources) #Selects values randomly 
+        food = random.choice(food_sources)                        #Selects values randomly
         tv = random.choice(tv_series)
         music = random.choice(music_genres)
         r = random.randint(0,255)
@@ -181,8 +181,8 @@ class Everything(commands.Cog): #Links the command file to the command handler
             title='Everything!',
             description=f'`Food`: {food}\n`Quote`: {quote}\n`Chemical Formula`: {form}\n`TV Series`: {tv}\n`Music Genre`: {music}\n`Colour`: Visible on the Embed!',
             color=discord.Color.from_rgb(r,g,b)
-        ) #creates embed
+        )                                                         #creates embed
         await interaction.response.send_message(embed=everything) #Sends the variable "everything" in an embedded message
 
-async def setup(bot):#Marks the end of the command and adds it to a folder called _pycache_
+async def setup(bot):                                             #Marks the end of the command and adds it to a folder called _pycache_
     await bot.add_cog(Everything(bot))

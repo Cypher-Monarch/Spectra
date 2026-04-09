@@ -3,16 +3,16 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 
-class Help(commands.Cog): #Links the command file to the command handler
+class Help(commands.Cog):                                                                #Links the command file to the command handler
     def __init__(self, bot):#initalises the bot to itself
         self.bot = bot
 
-    @commands.Cog.listener() # Registers a listener for events (enables the cog to respond to Discord events)
+    @commands.Cog.listener()                                                             # Registers a listener for events (enables the cog to respond to Discord events)
     async def on_ready(self):
-        print('Help loaded') #This one is just for confirming that the command has been loaded (Prints it in terminal itself)
+        print('Help loaded')                                                             #This one is just for confirming that the command has been loaded (Prints it in terminal itself)
 
     @app_commands.command(name = "help", description = "Sends the list of all commands") #The bot is initialised to command /help
-    async def help(self, interaction: discord.Interaction): #The parameters are basically the bot initialisation and the location of interaction with the bot
+    async def help(self, interaction: discord.Interaction):                              #The parameters are basically the bot initialisation and the location of interaction with the bot
         Commands = """
 `/calc`: Calculator on discord!!
 `/cf`: Sends random chemical formula!!
@@ -40,8 +40,8 @@ class Help(commands.Cog): #Links the command file to the command handler
                 title = "Sure, here is a list of all the commands",
                 description = f"{Commands}",
                 color = discord.Color(0xA76BCF)
-            ) #Created an embedded message
-        await interaction.response.send_message(embed = embed) #Sends the variable "embed" in an embedded message
+            )                                                                            #Created an embedded message
+        await interaction.response.send_message(embed = embed)                           #Sends the variable "embed" in an embedded message
 
-async def setup(bot): #Marks the end of the command and adds it to a folder called _pycache_
+async def setup(bot):                                                                    #Marks the end of the command and adds it to a folder called _pycache_
     await bot.add_cog(Help(bot))

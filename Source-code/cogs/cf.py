@@ -4,17 +4,17 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 #Definition of a class named cf
-class cf(commands.Cog): #Links the command file to the command handler
+class cf(commands.Cog):                                                               #Links the command file to the command handler
     def __init__(self, bot):#initalises the bot to itself
         self.bot = bot
 
-    @commands.Cog.listener() # Registers a listener for events (enables the cog to respond to Discord events)
+    @commands.Cog.listener()                                                          # Registers a listener for events (enables the cog to respond to Discord events)
     async def on_ready(self):
-        print('Chemical formulae loaded') #This one is just for confirming that the command has been loaded (Prints it in terminal itself)
+        print('Chemical formulae loaded')                                             #This one is just for confirming that the command has been loaded (Prints it in terminal itself)
 
 
     @app_commands.command(name = "cf", description = "Sends random chemical formula") #The bot is initialised to command /cf
-    async def cf(self, interaction: discord.Interaction): #The parameters are basically the bot initialisation and the location of interaction with the bot
+    async def cf(self, interaction: discord.Interaction):                             #The parameters are basically the bot initialisation and the location of interaction with the bot
         chemical_formulae = (
     "H₂O", "CO₂", "NaCl", "C₆H₁₂O₆", "NH₃", "CH₄", "H₂SO₄", "C₈H₁₈",
     "C₁₂H₂₂O₁₁", "CaCO₃", "C₂H₅OH", "NaHCO₃", "HCl", "AgNO₃", "Fe₂O₃",
@@ -29,14 +29,14 @@ class cf(commands.Cog): #Links the command file to the command handler
     "C₃H₃N", "C₄H₆O₂", "C₄H₈N₂", "C₄H₈O", "C₄H₉N", "C₆H₁₈N₂",
     "C₆H₉O₂", "C₇H₁₀O", "C₈H₁₄O₁", "C₁₂H₁₈O₂", "C₉H₁₂O₂",
     "C₁₁H₁₈O₂"
-) #The tuple containing the chemical formulae
-        randomChemicalformula = random.choice(chemical_formulae) #Selects a random chemical formula from above tuple
+)                                                                                     #The tuple containing the chemical formulae
+        randomChemicalformula = random.choice(chemical_formulae)                      #Selects a random chemical formula from above tuple
         embed = discord.Embed(
             title = "Your Chemical Formula Has Been Generated!!",
             description = f"The chemical formula is: `{randomChemicalformula}`",
             color = discord.Color.pink()
-        ) #Created an embedded message
+        )                                                                             #Created an embedded message
         embed.set_image(url = "https://media.discordapp.net/attachments/1273934041300602902/1295248548715298846/chemical_formulas_image.png") #The image viewed on thhe embed
-        await interaction.response.send_message(embed = embed) #Sends the variable "embed" in an embedded message 
-async def setup(bot): #Marks the end of the command and adds it to a folder called _pycache_
+        await interaction.response.send_message(embed = embed)                        #Sends the variable "embed" in an embedded message
+async def setup(bot):                                                                 #Marks the end of the command and adds it to a folder called _pycache_
     await bot.add_cog(cf(bot))

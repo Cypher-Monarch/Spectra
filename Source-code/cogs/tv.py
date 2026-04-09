@@ -5,16 +5,16 @@ from discord.ext import commands
 from discord import app_commands
 import math
 #Definition of a class named TV
-class TV(commands.Cog): #Links command file to command handler
-    def __init__(self, bot): #Initalises the bot to itself
+class TV(commands.Cog):                                                #Links command file to command handler
+    def __init__(self, bot):                                           #Initalises the bot to itself
         self.bot = bot
 
-    @commands.Cog.listener() # Registers a listener for events (enables the cog to respond to Discord events)
-    async def on_ready(self): #This one is just for confirming that the command has been loaded (Prints it in terminal itself)
+    @commands.Cog.listener()                                           # Registers a listener for events (enables the cog to respond to Discord events)
+    async def on_ready(self):                                          #This one is just for confirming that the command has been loaded (Prints it in terminal itself)
         print('TV loaded')
 
     @app_commands.command(name = "tv", description = "Random TV series!")
-    async def tv(self, interaction: discord.Interaction): #The parameters are basically the bot initialisation and the location of interaction with the bot
+    async def tv(self, interaction: discord.Interaction):              #The parameters are basically the bot initialisation and the location of interaction with the bot
         # Combined tuple of Hollywood and Bollywood TV series
         tv_series = (
             "Breaking Bad", "Game of Thrones", "Friends", "Stranger Things", "The Office", "The Mandalorian", 
@@ -28,7 +28,7 @@ class TV(commands.Cog): #Links command file to command handler
             "TVF Pitchers", "Kota Factory", "Permanent Roommates", "Panchayat", "Aspirants", "Little Things", 
             "Bandish Bandits", "Four More Shots Please!", "Bose: Dead or Alive", "Hostages", "Rangbaaz", "Bard of Blood"
         )
-        x = random.choice(tv_series) #Randomly selects a tv series
+        x = random.choice(tv_series)                                   #Randomly selects a tv series
         await interaction.response.send_message(f'I choose **`{x}`**') #Sends respective tv seeries via discord
 
 async def setup(bot):#Marks the end of the command and adds it to a folder called _pycache_
