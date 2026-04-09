@@ -12,20 +12,21 @@ intents.message_content = True                                # Allows the bot t
 #Bot is initialized to the command with prefix [!]
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-#Bot is initialized to command !sync (Required during development phase)
+'''
+# Bot is initialized to command !sync (Required during development phase)
 @bot.command()
 async def sync(ctx: commands.Context):
     x = await ctx.bot.tree.sync()
     await ctx.send(f'Synced {len(x)} commands')
+'''
 
 #Loads all the created commands ending with extension .py
-'''
 async def load():
     for filename in os.listdir('./cogs'):                     # Checks for file with path ./cogs
         if filename.endswith('.py'):
             #index -3 for the last ".py" of file
             await bot.load_extension(f'cogs.{filename[:-3]}') # Loads the command files
-'''
+
 async def cmdhandler():                                       # Asynchronous function called command handler is defined
     load_dotenv()
     Bot_Token = os.getenv("DISCORD_TOKEN")                    # Fetches the bot token from the .env file
