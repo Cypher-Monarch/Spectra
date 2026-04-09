@@ -20,6 +20,7 @@ class Help(commands.Cog):                                                       
 `/decypher`: Decodes your message using a super secret code!!
 `/color`: Sends random color in hex or rgb format!!
 `/everything`: A little bit of everything in one command!!
+`/font`: Generate a fancier font through your input!
 `/food`: Generate a random food item based on a nutrient you want!!
 `/img`: Random image based on number input!!
 `/info`: Know about the Developers and Version of the bot!!
