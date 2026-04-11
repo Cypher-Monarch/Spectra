@@ -1,21 +1,10 @@
-#The modules we are going to require for random music genre
+# The modules we are going to require for random music genre
 import random
 import discord
 from discord.ext import commands
 from discord import app_commands
-#Definition of a class named music
-class music(commands.Cog): #Links command file to command handler
-    def __init__(self, bot): 
-        self.bot = bot
 
-    @commands.Cog.listener() # Registers a listener for events (enables the cog to respond to Discord events)
-    async def on_ready(self): #This one is just for confirming that the command has been loaded (Prints it in terminal itself)
-        print('Music loaded')
-
-
-    @app_commands.command(name = "music", description = "Sends random music genre") #The bot is initialised to command /music
-    async def Music(self, interaction: discord.Interaction): #The parameters are basically bot initialisation and the location of interaction with the bot
-        music_genres = (
+music_genres = (
     "Afrobeat", "Alternative", "Ambient", "Art Rock", "Avant-garde Metal", "Bachata", 
     "Blues", "Bluegrass", "Bollywood", "Bossa Nova", "Breakbeat", "Cajun", "Carnatic", 
     "Chillout", "Chiptune", "Classical", "Country", "Cumbia", "Dancehall", "Death Metal", 
@@ -31,9 +20,22 @@ class music(commands.Cog): #Links command file to command handler
     "Screamo", "Shoegaze", "Ska", "Sludge Metal", "Soul", "Sufi", "Synthpop", 
     "Synthwave", "Tango", "Techno", "Tejano", "Thrash Metal", "Trance", "Trap", 
     "Trip-Hop", "Vaporwave", "World"
-) #Tuple of music genre
-        randomGenre = random.choice(music_genres) #Selects random music genre
-        await interaction.response.send_message(f"Your random music genre is: `{randomGenre}`") #Sends the message via discord
+) # Tuple of music genre
 
-async def setup(bot): #Marks the end of the command and adds it to a folder called _pycache_
+# Definition of a class named music
+class music(commands.Cog):                                                                      # Links command file to command handler
+    def __init__(self, bot): 
+        self.bot = bot
+
+    @commands.Cog.listener()                                                                    # Registers a listener for events (enables the cog to respond to Discord events)
+    async def on_ready(self):                                                                   # This one is just for confirming that the command has been loaded (Prints it in terminal itself)
+        print('Music loaded')
+
+
+    @app_commands.command(name = "music", description = "Sends random music genre")             # The bot is initialised to command /music
+    async def Music(self, interaction: discord.Interaction):                                    # The parameters are basically bot initialisation and the location of interaction with the bot
+        randomGenre = random.choice(music_genres)                                               # Selects random music genre
+        await interaction.response.send_message(f"Your random music genre is: `{randomGenre}`") # Sends the message via discord
+
+async def setup(bot):                                                                           # Marks the end of the command and adds it to a folder called _pycache_
     await bot.add_cog(music(bot))

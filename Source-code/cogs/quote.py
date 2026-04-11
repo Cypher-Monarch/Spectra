@@ -3,19 +3,8 @@ import random
 import discord
 from discord.ext import commands
 from discord import app_commands
-#Definition of a class named quote
-class quote(commands.Cog): #Links the command file to the command handler
-    def __init__(self, bot): #Initalises the bot to itself
-        self.bot = bot
 
-    @commands.Cog.listener() # Registers a listener for events (enables the cog to respond to Discord events)
-    async def on_ready(self): #This one is just for confirming that the command has been loaded (Prints it in terminal itself)
-        print('Quotes loaded')
-
-
-    @app_commands.command(name = "quote", description = "Sends a random quote") #The bot is initialised to command /info
-    async def quote(self, interaction: discord.Interaction): #The parameters are basically the bot initialisation and the location of interaction with the bot
-        quotes = (
+quotes = (
     "Life is what happens when you're busy making other plans. – John Lennon",
     "Get busy living or get busy dying. – Stephen King",
     "You only live once, but if you do it right, once is enough. – Mae West",
@@ -112,8 +101,19 @@ class quote(commands.Cog): #Links the command file to the command handler
     "Dream big and dare to fail - Norman Vaughan"
     ) #Tuple containing the quotes
 
-        randomQuote = random.choice(quotes) #Selects random quote
-        await interaction.response.send_message(f"`{randomQuote}`") #Sends the quote via discord
+#Definition of a class named quote
+class quote(commands.Cog):                                                      # Links the command file to the command handler
+    def __init__(self, bot):                                                    # Initalises the bot to itself
+        self.bot = bot
 
-async def setup(bot): #Marks the end of the command and adds it to a folder called _pycache_
+    @commands.Cog.listener()                                                    # Registers a listener for events (enables the cog to respond to Discord events)
+    async def on_ready(self):                                                   # This one is just for confirming that the command has been loaded (Prints it in terminal itself)
+        print('Quotes loaded')
+
+    @app_commands.command(name = "quote", description = "Sends a random quote") # The bot is initialised to command /info
+    async def quote(self, interaction: discord.Interaction):                    # The parameters are basically the bot initialisation and the location of interaction with the bot
+        randomQuote = random.choice(quotes)                                     # Selects random quote
+        await interaction.response.send_message(f"`{randomQuote}`")             # Sends the quote via discord
+
+async def setup(bot):                                                           # Marks the end of the command and adds it to a folder called _pycache_
     await bot.add_cog(quote(bot))
