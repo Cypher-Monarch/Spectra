@@ -12,11 +12,13 @@ intents.message_content = True                                # Allows the bot t
 # Bot is initialized to the command with prefix [!]
 bot = commands.Bot(command_prefix='!', intents=intents)
 
+'''
 # Bot is initialized to command !sync (Required during development phase)
 @bot.command()
 async def sync(ctx: commands.Context):
     x = await ctx.bot.tree.sync()
     await ctx.send(f'Synced {len(x)} commands')
+'''
 
 #Loads all the created commands ending with extension .py
 async def load():
